@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout15"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormOculosCilindricoFragment">
+    tools:context=".ui.oculos.form.FormOculosCilindricoFragment">
 
     <TextView
         android:id="@+id/textViewForm4"

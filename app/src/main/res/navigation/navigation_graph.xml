@@ -103,7 +103,7 @@
         tools:layout="@layout/blank_fragment" />
     <fragment
         android:id="@+id/formOculosFragment2"
-        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.FormOculosDnpAlturaFragment"
+        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosDnpAlturaFragment"
         android:label="form_oculos_fragment2_fragment"
         tools:layout="@layout/form_oculos_Dnp_Altura_fragment" >
         <action
@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/formOculosFragment3"
-        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.FormOculosEsfericoFragment"
+        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosEsfericoFragment"
         android:label="form_oculos_fragment3_fragment"
         tools:layout="@layout/form_oculos_esferico_fragment" >
         <action
@@ -121,7 +121,7 @@
     </fragment>
     <fragment
         android:id="@+id/formOculosFragment4"
-        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.FormOculosCilindricoFragment"
+        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosCilindricoFragment"
         android:label="form_oculos_fragment4_fragment"
         tools:layout="@layout/form_oculos_cilindrico_fragment" >
         <action
@@ -130,7 +130,7 @@
     </fragment>
     <fragment
         android:id="@+id/formOculosFragment5"
-        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.FormOculosEixoFragment"
+        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosEixoFragment"
         android:label="form_oculos_fragment5_fragment"
         tools:layout="@layout/form_oculos_eixo_fragment" >
         <action
@@ -139,7 +139,20 @@
     </fragment>
     <fragment
         android:id="@+id/listNewsFragment"
-        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ListNewsFragment"
+        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.api.list.ListNewsFragment"
         android:label="list_news_fragment"
-        tools:layout="@layout/list_news_fragment" />
+        tools:layout="@layout/list_news_fragment" >
+        <action
+            android:id="@+id/action_listNewsFragment_to_formNewsFragment"
+            app:destination="@id/formNewsFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/formNewsFragment"
+        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.api.form.FormNewsFragment"
+        android:label="form_news_fragment"
+        tools:layout="@layout/form_news_fragment" />
 </navigation>

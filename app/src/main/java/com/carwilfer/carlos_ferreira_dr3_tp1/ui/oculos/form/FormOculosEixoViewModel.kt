@@ -1,17 +1,14 @@
-package com.carwilfer.carlos_ferreira_dr3_tp1
+package com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 
-class FormOculosDnpAlturaViewModel (
+class FormOculosEixoViewModel(
     private val oculosDao: OculosDao, application: Application
 ) : AndroidViewModel(application) {
 
@@ -31,10 +28,10 @@ class FormOculosDnpAlturaViewModel (
         _msg.value = null
     }
 
-    fun salvarOculosDnpAltura(dnpOlhoDireito: String, dnpOlhoEsquedo: String, alturaOlhoDireito: String, alturaOlhoEsquerdo: String){
+    fun salvarOculosEixo(eixoLongeOlhoDireito: String, eixoLongeOlhoEsquedo: String, eixoPertoOlhoDireito: String, eixoPertoOlhoEsquedo: String){
         _status.value = false
         _msg.value = "Por favor, aguarde a persistencia!"
-        val oculos = Oculos(dnpOlhoDireito, dnpOlhoEsquedo, alturaOlhoDireito, alturaOlhoEsquerdo)
+        val oculos = Oculos(eixoLongeOlhoDireito, eixoLongeOlhoEsquedo, eixoPertoOlhoDireito, eixoPertoOlhoEsquedo)
         oculosDao.createOrUpdate(oculos)
             .addOnSuccessListener {
                 _status.value = true
@@ -44,8 +41,8 @@ class FormOculosDnpAlturaViewModel (
                 _msg.value = "Persistência falhou!"
                 Log.e("OculosDaoFirebase", "${it.message}")
             }
-
     }
+
     fun selectOculos(armacaoId: String) {
         oculosDao.read(armacaoId)
             .addOnSuccessListener {
@@ -59,10 +56,4 @@ class FormOculosDnpAlturaViewModel (
                 _msg.value = "${it.message}"
             }
     }
-    /*private fun getFileReference(armacaoId: String): StorageReference {
-        val firebaseStorage = FirebaseStorage.getInstance()
-        val storageReference = firebaseStorage.reference
-        val fileReference = storageReference.child("Oculos/imagens/$armacaoId.png")
-        return fileReference
-    }*/
 }

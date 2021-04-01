@@ -1,4 +1,4 @@
-package com.carwilfer.carlos_ferreira_dr3_tp1
+package com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.carwilfer.carlos_ferreira_dr3_tp1.LogRegister
+import com.carwilfer.carlos_ferreira_dr3_tp1.R
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosEClienteUtil
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosFirestoreDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
-import com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosViewModelFactory
 import kotlinx.android.synthetic.main.form_oculos_dnp_altura_fragment.*
-import kotlinx.android.synthetic.main.form_oculos_eixo_fragment.*
 import kotlinx.android.synthetic.main.form_oculos_fragment.*
 
 class FormOculosDnpAlturaFragment : Fragment() {
