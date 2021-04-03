@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_listaOculosFragment_to_listaClienteFragment"
             app:destination="@id/listaClienteFragment" />
+        <action
+            android:id="@+id/action_listaOculosFragment_to_configOculosFragment"
+            app:destination="@id/configOculosFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeMenuFragment"
@@ -97,11 +100,6 @@
         android:label="config_oculos_fragment"
         tools:layout="@layout/config_oculos_fragment" />
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.BlankFragment"
-        android:label="blank_fragment"
-        tools:layout="@layout/blank_fragment" />
-    <fragment
         android:id="@+id/formOculosFragment2"
         android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosDnpAlturaFragment"
         android:label="form_oculos_fragment2_fragment"
@@ -141,18 +139,5 @@
         android:id="@+id/listNewsFragment"
         android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.api.list.ListNewsFragment"
         android:label="list_news_fragment"
-        tools:layout="@layout/list_news_fragment" >
-        <action
-            android:id="@+id/action_listNewsFragment_to_formNewsFragment"
-            app:destination="@id/formNewsFragment"
-            app:enterAnim="@anim/fragment_open_enter"
-            app:exitAnim="@anim/fragment_open_exit"
-            app:popEnterAnim="@anim/fragment_close_enter"
-            app:popExitAnim="@anim/fragment_close_exit" />
-    </fragment>
-    <fragment
-        android:id="@+id/formNewsFragment"
-        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.api.form.FormNewsFragment"
-        android:label="form_news_fragment"
-        tools:layout="@layout/form_news_fragment" />
+        tools:layout="@layout/list_news_fragment" />
 </navigation>

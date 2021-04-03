@@ -1,5 +1,7 @@
 package com.carwilfer.carlos_ferreira_dr3_tp1.model
 
+import com.google.firebase.firestore.DocumentId
+
 open class Oculos (
     armacaoId: String? = null,
     val dnpOlhoDireito: String? = null,
@@ -21,6 +23,8 @@ open class Oculos (
     lente: String? = null,
     marcaArmacao: String? = null,
     cor: String? = null,
+    @DocumentId
+    var uid: String? = null
 ): OculosLite(marcaArmacao, cor, lente, armacaoId){
     override fun toString(): String = "$marcaArmacao: $lente: $cor"
 }

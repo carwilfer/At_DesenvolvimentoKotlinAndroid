@@ -40,12 +40,12 @@ class FormOculosDnpAlturaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        if (OculosEClienteUtil.oculosSelecionado != null){
+        /*if (OculosEClienteUtil.oculosSelecionado != null){
             fabFormOculosComentarios.visibility = View.VISIBLE
             FormOculosDnpAltura.selectOculos(OculosEClienteUtil.oculosSelecionado!!.armacaoId!!)
         }else{
             fabFormOculosComentarios.visibility = View.GONE
-        }
+        }*/
 
         btnFormDnpAlturaProximo.setOnClickListener{
             LogRegister.getInstance(requireContext()).escreverLog("Cadastrar Óculos")

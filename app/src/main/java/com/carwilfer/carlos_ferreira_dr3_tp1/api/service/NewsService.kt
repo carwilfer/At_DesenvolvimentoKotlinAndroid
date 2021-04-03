@@ -7,13 +7,21 @@ import retrofit2.http.*
 interface NewsService {
 
     //listar
-    @GET("svc/search/v2/articlesearch.json")
-    suspend fun all(@Query("api-key") news: String = "iaI80hGAwf9sE11YuPbkPcO2oG3jbUTw"): List<ResponseTypes>
+    /*@GET("svc/search/v2/articlesearch.json")
+    suspend fun all(@Query("api-key")
+        news: String = "iaI80hGAwf9sE11YuPbkPcO2oG3jbUTw")
+        : List<ResponseTypes>*/
 
-    @GET("api-key/{id}")
+    @GET("svc/search/v2/articlesearch.json")
+    suspend fun all(@Query("api-key")
+                    news: String = "iaI80hGAwf9sE11YuPbkPcO2oG3jbUTw")
+            : ResponseTypes
+
+
+    /*@GET("api-key/{id}")
     suspend fun read(@Path("id") id: Long)
 
-    /*@POST("api-key")
+    @POST("api-key")
     suspend fun insert(@Body responseTypes: ResponseTypes)
 
     @PUT("api-key/{id}")

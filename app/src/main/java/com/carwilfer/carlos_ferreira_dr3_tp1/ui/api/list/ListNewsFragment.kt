@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.carwilfer.carlos_ferreira_dr3_tp1.R
 import com.carwilfer.carlos_ferreira_dr3_tp1.adapter.NewsRecyclerAdapter
+import com.carwilfer.carlos_ferreira_dr3_tp1.model.ResponseTypes
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -30,10 +31,12 @@ class ListNewsFragment : Fragment() {
         fabListNewsToForm = view.findViewById(R.id.fabListNewsToForm)
 
         viewModelListNews = ViewModelProvider(this).get(ListNewsViewModel::class.java)
+
         viewModelListNews.news.observe(viewLifecycleOwner, Observer {
             if (!it.isNullOrEmpty())
                 recycleViewListNews.adapter = NewsRecyclerAdapter(it)
         })
+
         viewModelListNews.msg.observe(viewLifecycleOwner, Observer {
             if (!it.isNullOrBlank())
                 Snackbar.make(view, it, Snackbar.LENGTH_LONG).show()

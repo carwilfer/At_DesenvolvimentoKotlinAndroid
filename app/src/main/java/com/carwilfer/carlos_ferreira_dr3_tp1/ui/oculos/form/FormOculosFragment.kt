@@ -97,12 +97,12 @@ class FormOculosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        if (OculosEClienteUtil.oculosSelecionado != null){
+        /*if (OculosEClienteUtil.oculosSelecionado != null){
             fabFormOculosComentarios.visibility = View.VISIBLE
             viewModelFormOculos.selectOculos(OculosEClienteUtil.oculosSelecionado!!.armacaoId!!)
         }else{
             fabFormOculosComentarios.visibility = View.GONE
-        }
+        }*/
 
         btnFormOculosProximo.setOnClickListener{
             LogRegister.getInstance(requireContext()).escreverLog("Cadastrar Óculos")

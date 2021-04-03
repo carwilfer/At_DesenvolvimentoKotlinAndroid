@@ -42,12 +42,12 @@ class FormOculosEsfericoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        if (OculosEClienteUtil.oculosSelecionado != null){
+        /*if (OculosEClienteUtil.oculosSelecionado != null){
             fabFormOculosComentarios.visibility = View.VISIBLE
             viewModelFormOculosEsferico.selectOculos(OculosEClienteUtil.oculosSelecionado!!.armacaoId!!)
         }else{
             fabFormOculosComentarios.visibility = View.GONE
-        }
+        }*/
 
         btnFormEsfericoProximo.setOnClickListener{
             LogRegister.getInstance(requireContext()).escreverLog("Cadastrar Óculos")

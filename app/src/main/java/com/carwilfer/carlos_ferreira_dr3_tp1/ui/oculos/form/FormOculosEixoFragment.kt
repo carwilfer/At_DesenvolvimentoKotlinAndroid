@@ -14,6 +14,7 @@ import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosEClienteUtil
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosFirestoreDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
 import kotlinx.android.synthetic.main.form_oculos_cilindrico_fragment.*
+import kotlinx.android.synthetic.main.form_oculos_eixo_fragment.*
 import kotlinx.android.synthetic.main.form_oculos_fragment.*
 
 class FormOculosEixoFragment : Fragment() {

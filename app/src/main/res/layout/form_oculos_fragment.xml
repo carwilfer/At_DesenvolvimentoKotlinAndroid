@@ -14,6 +14,8 @@
         android:layout_height="91dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@android:drawable/ic_menu_camera" />
@@ -22,26 +24,26 @@
         android:id="@+id/editTextOculosAmacaoId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Nome Armação ID"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageViewFormOculosFoto"
-        tools:layout_editor_absoluteY="69dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFormOculosFoto" />
 
     <TextView
         android:id="@+id/textViewLente"
-        android:layout_width="120dp"
+        android:layout_width="135dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Tipo de Lente: "
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewFormOculosFoto" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextOculosAmacaoId" />
 
     <EditText
         android:id="@+id/editTextOculosLente"
@@ -55,9 +57,8 @@
         android:inputType="textPersonName"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textViewLente"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewFormOculosFoto" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextOculosAmacaoId" />
 
     <EditText
         android:id="@+id/editTextOculosMarca"
@@ -72,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLente" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextOculosLente" />
 
     <EditText
         android:id="@+id/editTextOculosCor"
@@ -82,6 +83,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="cor da Armação"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,16 +109,5 @@
         android:layout_marginBottom="208dp"
         android:text="Próximo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabFormOculosComentarios"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_menu_view"
-        android:visibility="gone"
-        app:backgroundTint="#FF9800"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
