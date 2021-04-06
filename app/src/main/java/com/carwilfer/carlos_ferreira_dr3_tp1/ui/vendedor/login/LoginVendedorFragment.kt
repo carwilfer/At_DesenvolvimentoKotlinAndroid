@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
@@ -67,13 +68,13 @@ class LoginVendedorFragment : Fragment() {
         )
 
         viewModelLoginVendedor = ViewModelProvider(this).get(LoginVendedorViewModel::class.java)
-        viewModelLoginVendedor.status.observe(viewLifecycleOwner, {
+        viewModelLoginVendedor.status.observe(viewLifecycleOwner, Observer{
             if (it){
                 requireActivity().bottomNavigationView.visibility = View.VISIBLE
                 findNavController().navigate(R.id.listaOculosFragment)
             }
         })
-        viewModelLoginVendedor.msg.observe(viewLifecycleOwner, {
+        viewModelLoginVendedor.msg.observe(viewLifecycleOwner, Observer{
             if (!it.isNullOrBlank())
                 Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         })

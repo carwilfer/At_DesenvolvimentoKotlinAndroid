@@ -5,14 +5,13 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
 
 class FormOculosDnpAlturaViewModel (
-    private val oculosDao: OculosDao, application: Application
-) : AndroidViewModel(application) {
-
-    private val app = application
+    private val oculosDao: OculosDao
+) : ViewModel() {
 
     private val _oculos = MutableLiveData<Oculos>()
     val oculos: LiveData<Oculos> = _oculos
@@ -23,10 +22,10 @@ class FormOculosDnpAlturaViewModel (
     private val _msg = MutableLiveData<String>()
     val msg: LiveData<String> = _msg
 
-    init {
+    /*init {
         _status.value = false
         _msg.value = null
-    }
+    }*/
 
     fun salvarOculosDnpAltura(dnpOlhoDireito: String, dnpOlhoEsquedo: String, alturaOlhoDireito: String, alturaOlhoEsquerdo: String){
         _status.value = false
@@ -56,10 +55,4 @@ class FormOculosDnpAlturaViewModel (
                 _msg.value = "${it.message}"
             }
     }
-    /*private fun getFileReference(armacaoId: String): StorageReference {
-        val firebaseStorage = FirebaseStorage.getInstance()
-        val storageReference = firebaseStorage.reference
-        val fileReference = storageReference.child("Oculos/imagens/$armacaoId.png")
-        return fileReference
-    }*/
 }

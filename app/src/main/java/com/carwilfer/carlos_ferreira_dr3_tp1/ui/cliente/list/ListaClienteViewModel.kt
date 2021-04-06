@@ -26,4 +26,17 @@ class ListaClienteViewModel : ViewModel() {
         }
         Log.i("ListaClienteViewModel", "Atualização Finalizada.")
     }*/
+
+    /*fun atualizarListaClientes(){
+        clienteDao.all().addSnapshotListener{
+            snapshot, error ->
+            if (error != null)
+                Log.i("ListaClienteViewModel", "Atualizando Lista de Clientes")
+            else
+                if(snapshot != null && !snapshot.isEmpty){
+                    val cliente = snapshot.toObjects(ClienteLite::class.java)
+                    _clientes.value = cliente
+                }
+        }
+    }*/
 }

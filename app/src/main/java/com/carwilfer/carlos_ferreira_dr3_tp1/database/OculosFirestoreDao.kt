@@ -28,8 +28,8 @@ class OculosFirestoreDao: OculosDao {
         return collection.document(oculos.armacaoId!!).delete()
     }
 
-    override fun read(id: String): Task<DocumentSnapshot> {
-        return collection.document(id).get()
+    override fun read(armacaoId: String): Task<DocumentSnapshot> {
+        return collection.document(armacaoId).get()
     }
 
     override fun searchByArmacao(marcaArmacao: String): Task<QuerySnapshot>{

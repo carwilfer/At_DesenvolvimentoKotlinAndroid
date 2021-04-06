@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.core.net.toUri
 import androidx.lifecycle.*
+import com.carwilfer.carlos_ferreira_dr3_tp1.database.NewsUtil
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosEClienteUtil
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
@@ -34,7 +35,7 @@ class FormOculosViewModel (
 
     init {
         _status.value = false
-        _msg.value = null
+        //_msg.value = null
     }
 
     fun salvarOculos(armacaoId: String, /* dnpOlhoDireito: String, dnpOlhoEsquedo: String, alturaOlhoDireito: String, alturaOlhoEsquerdo: String, esfericoLongeOlhoDireito: String, esfericoLongeOlhoEsquedo: String, esfericoPertoOlhoDireito: String,
@@ -46,8 +47,7 @@ class FormOculosViewModel (
         val oculos = Oculos(armacaoId, /*dnpOlhoDireito, dnpOlhoEsquedo, alturaOlhoDireito, alturaOlhoEsquerdo, esfericoLongeOlhoDireito, esfericoLongeOlhoEsquedo, esfericoPertoOlhoDireito,
                 esfericoPertoOlhoEsquedo, cilindricoLongeOlhoDireito, cilindricoLongeOlhoEsquedo, cilindricoPertoOlhoDireito, cilindricoPertoOlhoEsquedo, eixoLongeOlhoDireito, eixoLongeOlhoEsquedo,
                 eixoPertoOlhoDireito, eixoPertoOlhoEsquedo,*/ lente, marcaArmacao, cor)
-
-        uploadImageOculos(armacaoId)
+                uploadImageOculos(armacaoId)
         oculosDao.createOrUpdate(oculos)
             .addOnSuccessListener {
                 _status.value = true
@@ -57,7 +57,6 @@ class FormOculosViewModel (
                 _msg.value = "Persistência falhou!"
                 Log.e("OculosDaoFirebase", "${it.message}")
             }
-
      }
 
     fun selectOculos(armacaoId: String) {

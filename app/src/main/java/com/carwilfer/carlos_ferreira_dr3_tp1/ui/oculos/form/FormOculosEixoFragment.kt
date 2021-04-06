@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.carwilfer.carlos_ferreira_dr3_tp1.LogRegister
 import com.carwilfer.carlos_ferreira_dr3_tp1.R
+import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosEClienteUtil
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosFirestoreDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
@@ -19,8 +22,11 @@ import kotlinx.android.synthetic.main.form_oculos_fragment.*
 
 class FormOculosEixoFragment : Fragment() {
 
+
     val application = requireActivity().application
-    val formOculosViewModelFactory = FormOculosViewModelFactory(OculosFirestoreDao(), application)
+    //val formOculosViewModelFactory = FormOculosViewModelFactory(OculosFirestoreDao(), application)
+
+    private lateinit var oculosDao : OculosDao
 
     private lateinit var viewModelFormOculosEixo: FormOculosEixoViewModel
 
@@ -31,8 +37,11 @@ class FormOculosEixoFragment : Fragment() {
         val view = inflater.inflate(R.layout.form_oculos_eixo_fragment, container, false)
         LogRegister.getInstance(requireContext()).escreverLog("Acessou: FormOculosFragment")
 
-        viewModelFormOculosEixo = ViewModelProvider(this).get(FormOculosEixoViewModel::class.java)
-        viewModelFormOculosEixo.oculos.observe(viewLifecycleOwner, {
+        oculosDao =  OculosFirestoreDao()
+        val formOculosEixoViewModelFactory = FormOculosEixoViewModelFactory(oculosDao)
+
+        viewModelFormOculosEixo = ViewModelProvider(this, formOculosEixoViewModelFactory).get(FormOculosEixoViewModel::class.java)
+        viewModelFormOculosEixo.oculos.observe(viewLifecycleOwner, Observer{
             if (it != null){
                 preencherFormulario(it)
             }
@@ -66,6 +75,7 @@ class FormOculosEixoFragment : Fragment() {
 
         fabFormOculosComentarios.setOnClickListener {
             findNavController().navigate(R.id.comentarioOculosFragment)
+
         }
     }
 

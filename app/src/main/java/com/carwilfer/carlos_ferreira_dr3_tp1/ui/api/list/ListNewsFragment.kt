@@ -44,18 +44,4 @@ class ListNewsFragment : Fragment() {
 
         return view
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        fabListNewsToForm.setOnClickListener {
-            findNavController().navigate(R.id.action_listNewsFragment_to_formNewsFragment)
-        }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
 }

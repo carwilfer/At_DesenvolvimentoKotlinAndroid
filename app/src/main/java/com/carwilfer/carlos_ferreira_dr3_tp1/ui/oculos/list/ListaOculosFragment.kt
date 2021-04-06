@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,7 +38,7 @@ class ListaOculosFragment : Fragment() {
 
         viewModelListaOculos = ViewModelProvider(this, listOculosViewModelFactory).get(ListaOculosViewModel::class.java) //para poder passar parametro para a ViewModel, através da instancia da provider
 
-        viewModelListaOculos.oculos.observe(viewLifecycleOwner, {
+        viewModelListaOculos.oculos.observe(viewLifecycleOwner, Observer{
             recyclerViewListOculos.adapter = RecyclerListOculos(it){
                 OculosEClienteUtil.oculosSelecionado = it
                 findNavController().navigate(R.id.formOculosFragment)

@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.carwilfer.carlos_ferreira_dr3_tp1.LogRegister
 import com.carwilfer.carlos_ferreira_dr3_tp1.R
-import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosEClienteUtil
+import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosFirestoreDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
 import kotlinx.android.synthetic.main.form_oculos_cilindrico_fragment.*
@@ -18,10 +19,8 @@ import kotlinx.android.synthetic.main.form_oculos_fragment.*
 
 class FormOculosCilindricoFragment : Fragment() {
 
-    val application = requireActivity().application
-    val formOculosViewModelFactory = FormOculosViewModelFactory(OculosFirestoreDao(), application)
-
     private lateinit var viewModelFormOculosCilindrico: FormOculosCilindricoViewModel
+    private lateinit var oculosDao : OculosDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +29,16 @@ class FormOculosCilindricoFragment : Fragment() {
         val view = inflater.inflate(R.layout.form_oculos_cilindrico_fragment, container, false)
         LogRegister.getInstance(requireContext()).escreverLog("Acessou: FormOculosFragment")
 
-        viewModelFormOculosCilindrico = ViewModelProvider(this).get(FormOculosCilindricoViewModel::class.java)
+        oculosDao =  OculosFirestoreDao()
+        val formOculosCilindricoViewModelFectory = FormOculosCilindricoViewModelFactory(oculosDao)
 
-        viewModelFormOculosCilindrico.oculos.observe(viewLifecycleOwner, {
+        viewModelFormOculosCilindrico = ViewModelProvider(this, formOculosCilindricoViewModelFectory).get(FormOculosCilindricoViewModel::class.java)
+
+        viewModelFormOculosCilindrico.oculos.observe(viewLifecycleOwner, Observer{
             if (it != null){
                 preencherFormulario(it)
             }
         })
-
         return view
     }
 
@@ -56,12 +57,8 @@ class FormOculosCilindricoFragment : Fragment() {
             viewModelFormOculosCilindrico.salvarOculosCilindrico(cilindricoLongeOlhoDireito,
                 cilindricoLongeOlhoEsquedo, cilindricoPertoOlhoDireito, cilindricoPertoOlhoEsquedo
             )
-            findNavController().navigate(R.id.formOculosFragment5)
+            findNavController().navigate(R.id.formOculosEixoFragment5)
         }
-
-        /*fabFormOculosComentarios.setOnClickListener {
-            findNavController().navigate(R.id.formOculosFragment5)
-        }*/
     }
 
     private fun preencherFormulario(oculos: Oculos){

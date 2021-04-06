@@ -28,8 +28,8 @@
         android:label="form_oculos_fragment"
         tools:layout="@layout/form_oculos_fragment" >
         <action
-            android:id="@+id/action_formOculosFragment_to_formOculosFragment2"
-            app:destination="@id/formOculosFragment2" />
+            android:id="@+id/action_formOculosFragment_to_formOculosDnpAltura2Fragment"
+            app:destination="@id/formOculosDnpAlturaFragment" />
     </fragment>
     <fragment
         android:id="@+id/listaOculosFragment"
@@ -103,34 +103,30 @@
         android:id="@+id/formOculosFragment2"
         android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosDnpAlturaFragment"
         android:label="form_oculos_fragment2_fragment"
-        tools:layout="@layout/form_oculos_Dnp_Altura_fragment" >
-        <action
-            android:id="@+id/action_formOculosFragment2_to_formOculosFragment3"
-            app:destination="@id/formOculosFragment3" />
-    </fragment>
+        tools:layout="@layout/form_oculos_Dnp_Altura_fragment" />
     <fragment
-        android:id="@+id/formOculosFragment3"
+        android:id="@+id/formOculosEsfericoFragment3"
         android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosEsfericoFragment"
-        android:label="form_oculos_fragment3_fragment"
-        tools:layout="@layout/form_oculos_esferico_fragment" >
+        android:label="form_oculos_esferico_fragment3"
+        tools:layout="@layout/form_oculos_esferico_fragment">
         <action
             android:id="@+id/action_formOculosFragment3_to_formOculosFragment4"
-            app:destination="@id/formOculosFragment4" />
+            app:destination="@id/formOculosCilindricoFragment4" />
     </fragment>
     <fragment
-        android:id="@+id/formOculosFragment4"
+        android:id="@+id/formOculosCilindricoFragment4"
         android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosCilindricoFragment"
         android:label="form_oculos_fragment4_fragment"
         tools:layout="@layout/form_oculos_cilindrico_fragment" >
         <action
             android:id="@+id/action_formOculosFragment4_to_formOculosFragment5"
-            app:destination="@id/formOculosFragment5" />
+            app:destination="@id/formOculosEixoFragment5" />
     </fragment>
     <fragment
-        android:id="@+id/formOculosFragment5"
+        android:id="@+id/formOculosEixoFragment5"
         android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosEixoFragment"
-        android:label="form_oculos_fragment5_fragment"
-        tools:layout="@layout/form_oculos_eixo_fragment" >
+        android:label="form_oculos_eixo_fragment"
+        tools:layout="@layout/form_oculos_eixo_fragment">
         <action
             android:id="@+id/action_formOculosFragment5_to_comentarioOculosFragment"
             app:destination="@id/comentarioOculosFragment" />
@@ -140,4 +136,13 @@
         android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.api.list.ListNewsFragment"
         android:label="list_news_fragment"
         tools:layout="@layout/list_news_fragment" />
+    <fragment
+        android:id="@+id/formOculosDnpAlturaFragment"
+        android:name="com.carwilfer.carlos_ferreira_dr3_tp1.ui.oculos.form.FormOculosDnpAlturaFragment"
+        android:label="form_oculos_dnp_altura_fragment"
+        tools:layout="@layout/form_oculos_dnp_altura_fragment">
+        <action
+            android:id="@+id/action_formOculosDnpAltura2Fragment_to_formOculosFragment3"
+            app:destination="@id/formOculosEsfericoFragment3" />
+    </fragment>
 </navigation>

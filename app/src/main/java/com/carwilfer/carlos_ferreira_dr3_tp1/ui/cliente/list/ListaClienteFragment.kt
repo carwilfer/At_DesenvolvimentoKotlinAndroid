@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.carwilfer.carlos_ferreira_dr3_tp1.R
+import com.carwilfer.carlos_ferreira_dr3_tp1.database.ClienteFirebaseDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosEClienteUtil
+import com.carwilfer.carlos_ferreira_dr3_tp1.database.VendedorFirebaseDao
 import kotlinx.android.synthetic.main.lista_cliente_fragment.*
 
 class ListaClienteFragment : Fragment() {
@@ -21,8 +23,9 @@ class ListaClienteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
+        verificarCliente()
         val view = inflater.inflate(R.layout.lista_cliente_fragment, container, false)
+
         viewModelListaCliente = ViewModelProvider(this).get(ListaClienteViewModel::class.java)
         viewModelListaCliente.clientes.observe(viewLifecycleOwner){
             listViewCliente.adapter = ArrayAdapter(
@@ -48,7 +51,6 @@ class ListaClienteFragment : Fragment() {
         }
     })
         return view*/
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -56,6 +58,13 @@ class ListaClienteFragment : Fragment() {
         fabFormCliente.setOnClickListener{
             findNavController().navigate(R.id.formClienteFragment)
         }
+        fabListNews.setOnClickListener {
+            findNavController().navigate(R.id.listNewsFragment)
+        }
+    }
 
+    fun verificarCliente(){
+        if (ClienteFirebaseDao.firebaseAuth.currentUser == null)
+            findNavController().popBackStack()
     }
 }
