@@ -9,6 +9,7 @@ import com.carwilfer.carlos_ferreira_dr3_tp1.database.NewsUtil
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosEClienteUtil
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
+import com.carwilfer.carlos_ferreira_dr3_tp1.model.OculosForm
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.launch
@@ -43,12 +44,16 @@ class FormOculosViewModel (
                      eixoPertoOlhoDireito: String, eixoPertoOlhoEsquedo: String,*/ lente: String, marcaArmacao: String, cor: String) {
         _status.value = false
         _msg.value = "Por favor, aguarde a persistencia!"
+        OculosForm.armacaoId = armacaoId
 
-        val oculos = Oculos(armacaoId, /*dnpOlhoDireito, dnpOlhoEsquedo, alturaOlhoDireito, alturaOlhoEsquerdo, esfericoLongeOlhoDireito, esfericoLongeOlhoEsquedo, esfericoPertoOlhoDireito,
-                esfericoPertoOlhoEsquedo, cilindricoLongeOlhoDireito, cilindricoLongeOlhoEsquedo, cilindricoPertoOlhoDireito, cilindricoPertoOlhoEsquedo, eixoLongeOlhoDireito, eixoLongeOlhoEsquedo,
-                eixoPertoOlhoDireito, eixoPertoOlhoEsquedo,*/ lente, marcaArmacao, cor)
+        val oculos = Oculos(
+                armacaoId = armacaoId,
+                lente = lente,
+                marcaArmacao = marcaArmacao,
+                cor = cor)
                 uploadImageOculos(armacaoId)
-        oculosDao.createOrUpdate(oculos)
+
+            oculosDao.createOrUpdate(oculos)
             .addOnSuccessListener {
                 _status.value = true
                 _msg.value = "Persistência realizada!"
@@ -57,6 +62,7 @@ class FormOculosViewModel (
                 _msg.value = "Persistência falhou!"
                 Log.e("OculosDaoFirebase", "${it.message}")
             }
+
      }
 
     fun selectOculos(armacaoId: String) {

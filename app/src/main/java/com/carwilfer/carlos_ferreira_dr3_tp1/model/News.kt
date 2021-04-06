@@ -7,6 +7,9 @@ class News (
     val print_page: Int? = null,
     val source: String? = null,
     val multimedia: List<Multimedia>? = null,
-    val keywords: List<Keywords>? = null
+    val keywords: List<Keywords>? = null,
+    val headline: Headline? = null,
+
+
 
 )

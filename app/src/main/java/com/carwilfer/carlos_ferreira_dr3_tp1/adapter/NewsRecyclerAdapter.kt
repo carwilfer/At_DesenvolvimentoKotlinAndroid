@@ -26,8 +26,8 @@ class NewsRecyclerAdapter (
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val news = news[position]
-        holder.textViewListNewsAssunto.text = news.web_url
-        holder.textViewListNewsConteudo.text = news.print_page.toString()
+        holder.textViewListNewsAssunto.text = news.source
+        holder.textViewListNewsConteudo.text = news.headline?.main
     }
 
     override fun getItemCount(): Int = news.size

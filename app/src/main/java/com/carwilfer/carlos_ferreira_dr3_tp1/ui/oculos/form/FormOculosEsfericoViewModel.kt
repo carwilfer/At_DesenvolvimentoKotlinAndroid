@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
+import com.carwilfer.carlos_ferreira_dr3_tp1.model.OculosForm
 
 class FormOculosEsfericoViewModel (
     private val oculosDao: OculosDao
@@ -30,8 +31,16 @@ class FormOculosEsfericoViewModel (
     fun salvarOculosEsferico(esfericoLongeOlhoDireito: String, esfericoLongeOlhoEsquedo: String, esfericoPertoOlhoDireito: String, esfericoPertoOlhoEsquedo: String){
         _status.value = false
         _msg.value = "Por favor, aguarde a persistencia!"
-        val oculos = Oculos(esfericoLongeOlhoDireito, esfericoLongeOlhoEsquedo, esfericoPertoOlhoDireito, esfericoPertoOlhoEsquedo)
-        oculosDao.createOrUpdate(oculos)
+        val armacaoId = OculosForm.armacaoId
+
+        if (armacaoId != null){
+        val oculos = Oculos(
+                armacaoId = OculosForm.armacaoId,
+                esfericoLongeOlhoDireito = esfericoLongeOlhoDireito,
+                esfericoLongeOlhoEsquedo = esfericoLongeOlhoEsquedo,
+                esfericoPertoOlhoDireito = esfericoPertoOlhoDireito,
+                esfericoPertoOlhoEsquedo = esfericoPertoOlhoEsquedo)
+            oculosDao.createOrUpdate(oculos)
             .addOnSuccessListener {
                 _status.value = true
                 _msg.value = "Persistência realizada!"
@@ -40,6 +49,10 @@ class FormOculosEsfericoViewModel (
                 _msg.value = "Persistência falhou!"
                 Log.e("OculosDaoFirebase", "${it.message}")
             }
+
+        } else {
+            _msg.value = "Nao foi encontrado um oculos."
+        }
 
     }
     fun selectOculos(armacaoId: String) {

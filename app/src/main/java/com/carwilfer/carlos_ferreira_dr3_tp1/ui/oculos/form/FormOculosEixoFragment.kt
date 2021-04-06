@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.form_oculos_fragment.*
 class FormOculosEixoFragment : Fragment() {
 
 
-    val application = requireActivity().application
+    //val application = requireActivity().application
     //val formOculosViewModelFactory = FormOculosViewModelFactory(OculosFirestoreDao(), application)
 
     private lateinit var oculosDao : OculosDao
@@ -46,6 +46,11 @@ class FormOculosEixoFragment : Fragment() {
                 preencherFormulario(it)
             }
         })
+        viewModelFormOculosEixo.status.observe(viewLifecycleOwner, Observer {
+            if(it == true){
+                findNavController().navigate(R.id.listaOculosFragment)
+            }
+        })
 
         return view
     }
@@ -59,18 +64,18 @@ class FormOculosEixoFragment : Fragment() {
             fabFormOculosComentarios.visibility = View.GONE
         }
 
-        btnFormCilindricoProximo.setOnClickListener{
+        fabFormOculosSalvar.setOnClickListener{
             LogRegister.getInstance(requireContext()).escreverLog("Cadastrar Óculos")
 
-            val eixoLongeOlhoDireito = editTextCilindricoLongeOd.text.toString()
-            val eixoLongeOlhoEsquedo = editTextCilindricoLongeOe.text.toString()
-            val eixoPertoOlhoDireito = editTextCilindricoPertoOd.text.toString()
-            val eixoPertoOlhoEsquedo = editTextCilindricoPertoEs.text.toString()
-
+            val eixoLongeOlhoDireito = editTextEixoLongeOd.text.toString()
+            val eixoLongeOlhoEsquedo = editTextEixoLongeOe.text.toString()
+            val eixoPertoOlhoDireito = editTextEixoPertoOd.text.toString()
+            val eixoPertoOlhoEsquedo = editTextEixoPertoEs.text.toString()
 
             viewModelFormOculosEixo.salvarOculosEixo(eixoLongeOlhoDireito,
                 eixoLongeOlhoEsquedo, eixoPertoOlhoDireito, eixoPertoOlhoEsquedo
             )
+
         }
 
         fabFormOculosComentarios.setOnClickListener {
@@ -81,10 +86,10 @@ class FormOculosEixoFragment : Fragment() {
 
     private fun preencherFormulario(oculos: Oculos){
 
-        editTextCilindricoLongeOd.setText(oculos.eixoLongeOlhoDireito)
-        editTextCilindricoLongeOe.setText(oculos.eixoLongeOlhoEsquedo)
-        editTextCilindricoPertoOd.setText(oculos.eixoPertoOlhoDireito)
-        editTextCilindricoPertoEs.setText(oculos.eixoPertoOlhoEsquedo)
+        editTextEixoLongeOd.setText(oculos.eixoLongeOlhoDireito)
+        editTextEixoLongeOe.setText(oculos.eixoLongeOlhoEsquedo)
+        editTextEixoPertoOd.setText(oculos.eixoPertoOlhoDireito)
+        editTextEixoPertoEs.setText(oculos.eixoPertoOlhoEsquedo)
     }
 
 }

@@ -9,7 +9,10 @@ class OculosFirestoreDao: OculosDao {
     private val collection = FirebaseFirestore.getInstance().collection("oculos")
 
     override fun createOrUpdate(oculos: Oculos): Task<Void> {
+        //if(oculos.armacaoId != null)
         return collection.document(oculos.armacaoId!!).set(oculos, SetOptions.merge())
+       // else
+            //return null
     }
 
     override fun all(): CollectionReference {

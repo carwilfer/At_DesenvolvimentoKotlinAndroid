@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.carwilfer.carlos_ferreira_dr3_tp1.database.OculosDao
 import com.carwilfer.carlos_ferreira_dr3_tp1.model.Oculos
+import com.carwilfer.carlos_ferreira_dr3_tp1.model.OculosForm
 
 class FormOculosDnpAlturaViewModel (
     private val oculosDao: OculosDao
@@ -30,18 +31,32 @@ class FormOculosDnpAlturaViewModel (
     fun salvarOculosDnpAltura(dnpOlhoDireito: String, dnpOlhoEsquedo: String, alturaOlhoDireito: String, alturaOlhoEsquerdo: String){
         _status.value = false
         _msg.value = "Por favor, aguarde a persistencia!"
-        val oculos = Oculos(dnpOlhoDireito, dnpOlhoEsquedo, alturaOlhoDireito, alturaOlhoEsquerdo)
-        oculosDao.createOrUpdate(oculos)
-            .addOnSuccessListener {
-                _status.value = true
-                _msg.value = "Persistência realizada!"
-            }
-            .addOnFailureListener {
-                _msg.value = "Persistência falhou!"
-                Log.e("OculosDaoFirebase", "${it.message}")
-            }
+
+        val armacaoId = OculosForm.armacaoId
+
+        if (armacaoId != null){
+            val oculos = Oculos(
+                    armacaoId = armacaoId,
+                    dnpOlhoDireito = dnpOlhoDireito,
+                    dnpOlhoEsquedo = dnpOlhoEsquedo,
+                    alturaOlhoDireito = alturaOlhoDireito,
+                    alturaOlhoEsquedo = alturaOlhoEsquerdo)
+
+            oculosDao.createOrUpdate(oculos)
+                    .addOnSuccessListener {
+                        _status.value = true
+                        _msg.value = "Persistência realizada!"
+                    }
+                    .addOnFailureListener {
+                        _msg.value = "Persistência falhou!"
+                        Log.e("OculosDaoFirebase", "${it.message}")
+                    }
+        } else {
+            _msg.value = "Armacao nao encontrada!"
+        }
 
     }
+
     fun selectOculos(armacaoId: String) {
         oculosDao.read(armacaoId)
             .addOnSuccessListener {
